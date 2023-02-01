@@ -21,8 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/categorias', 'CategoriaController@index');
-Route::get('/listar-categorias', 'CategoriaController@listarCategorias');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/articulos', 'ArticuloController');
+});
 
-Route::resource('/articulos', 'ArticuloController');
-Route::get('/listar-articulos', 'ArticuloController@listarArticulos');
+Route::get('/listar-categorias', 'CategoriaController@listarCategorias');
+Route::get('/categorias', 'CategoriaController@index');
+
+Route::get('/listar-articulos', 'ArticuloController@listarArticulos')->middleware('auth');
