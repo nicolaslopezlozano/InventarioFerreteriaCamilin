@@ -24,8 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::resource('/articulos', 'ArticuloController');
 });
+Route::get('/listar-articulos', 'ArticuloController@listarArticulos')->middleware('auth');
 
 Route::get('/listar-categorias', 'CategoriaController@listarCategorias');
 Route::get('/categorias', 'CategoriaController@index');
+Route::post('/categorias', 'CategoriaController@store');
 
-Route::get('/listar-articulos', 'ArticuloController@listarArticulos')->middleware('auth');
+Route::delete('/categorias/{id}', 'CategoriaController@destroy');
+Route::put('/categorias/{id}', 'CategoriaController@update');

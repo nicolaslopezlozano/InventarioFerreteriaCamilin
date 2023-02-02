@@ -23,8 +23,8 @@ class CategoriaController extends Controller
 
     public function listarCategorias()
     {
-        // return Categoria::get();
-        return Categoria::with(['articulos'])->get();
+        return Categoria::get();
+        // return Categoria::with(['articulos'])->get();
     }
 
     /**
@@ -45,7 +45,18 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->name = $request->name;
+        $categoria->save();
+
+        // Categoria::create([
+        //     'name' => $request->name
+        // ]);
+
+        // Categoria::create($request);
+
+        return $categoria;
+
     }
 
     /**
@@ -79,7 +90,9 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->name = $request->name;
+        $categoria->save();
     }
 
     /**
@@ -90,6 +103,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
     }
 }
