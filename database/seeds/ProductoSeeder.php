@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Articulo;
+use App\Models\Producto;
 
-class ArticuloSeeder extends Seeder
+class ProductoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class ArticuloSeeder extends Seeder
      */
     public function run()
     {
-        Articulo::create([
+        Producto::create([
             'register_number'=>'0010k',
             'name'=>'Toma-corriente',
             'quantity'=>15,

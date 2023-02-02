@@ -22,9 +22,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/articulos', 'ArticuloController');
+    Route::get('/listar-productos', 'ProductoController@listarProductos')/**->middleware('auth')*/;
+    Route::resource('/productos', 'ProductoController');
 });
-Route::get('/listar-articulos', 'ArticuloController@listarArticulos')->middleware('auth');
 
 Route::get('/listar-categorias', 'CategoriaController@listarCategorias');
 Route::get('/categorias', 'CategoriaController@index');

@@ -11,7 +11,7 @@ class Categoria extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
 
-    public function articulos(){
-        return $this->hasMany(Articulo::class);
+    public function productos(){
+        return $this->hasMany(Producto::class);
     }
 }

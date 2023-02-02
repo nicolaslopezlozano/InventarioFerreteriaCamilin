@@ -80,6 +80,7 @@
 </template>
 <script>
     const axios = require("axios");
+    import Swal from "sweetalert2"
     export default {
         name:'categoria-component',
         data(){
@@ -114,7 +115,15 @@
                 axios
                     .post("/categorias", formData)
                     .then((response) => {
-                        window.alert("Categoria creada");
+                        // window.alert("Categoria creada");
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Bien!',
+                            text: 'Categoria creada',
+                            confirmButtonColor: "rgba(56,193,114,255)",
+                            allowEnterKey: true
+                        });
+
                         this.nombre_categoria = null;
                         $('#modalCreacion').modal('hide');
                         this.getTodasLasCategorias();
@@ -124,7 +133,13 @@
                 axios
                     .delete("/categorias/"+id)
                     .then((response) =>{
-                        window.alert("Categoria eliminada");
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Bien!',
+                            text: 'Eliminado exitosamente',
+                            confirmButtonColor: "#FA182C",
+                            allowEnterKey: true
+                        });
                         this.getTodasLasCategorias();
                     } );
             },
@@ -140,10 +155,19 @@
                 axios
                     .put("/categorias/"+this.id_editar, array)
                     .then((response) =>{
-                        window.alert("Categoria editada");
+                        // window.alert("Categoria editada");
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Bien!',
+                            text: 'Editado exitosamente',
+                            confirmButtonColor: "#6cb2eb",
+                            allowEnterKey:true,
+                            focusConfirm:true,
+                            showConfirmButton:true
+                        });
                         $('#editarModal').modal('hide');
                         this.getTodasLasCategorias();
-                    } );
+                    });
             }
         }
     }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Articulo;
+use App\Models\Producto;
 
-class ArticuloController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,12 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        return view('articulos.articulo_table');
+        return view('productos.producto_table');
     }
 
-    public function listarArticulos()
+    public function listarProductos()
     {
-        return Articulo::with(['categoria'])->get();
+        return Producto::with(['categoria'])->get();
     }
 
     /**
@@ -40,7 +40,8 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto();
+        $producto;
     }
 
     /**
